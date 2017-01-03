@@ -1,0 +1,65 @@
+<!--index.wxml-->
+<view class="action_view"  bindtouchstart="tapStart" bindtouchmove="tapMove" bindtouchend="tapEnd">
+<view class="containerWrap">
+    <view class="heading">
+      <view class="title">2048</view>
+      <view class="scores-container">
+        <view class="score-container">{{score}}<view hidden="{{isAddScore}}" class="add_score" 
+        animation="{{animationScoreData}}">+{{addScore}}</view></view>
+        <view class="best-container noMr">{{maxscore}}</view>
+      </view>
+    </view>
+
+    <view class="above-game">
+      <view class="game-intro">提示:快将数字组合得到2048吧</view>
+      <view class="restart-button" bindtap="newGame">New Game</view>
+    </view>
+
+    <view class="game-container">
+      <view class="game-message" wx:if="{{isOver==true}}">
+        <view class="game-tip">Game over!</view>
+        <view class="lower">
+        <button class="retry-button">Try again</button>
+	      <button class="keeview-viewlaying-button">Keep going</button>
+        </view>
+      </view>
+
+      <view class="grid-container" >
+        <view class="grid-row">
+          <view class="grid-cell"></view>
+          <view class="grid-cell"></view>
+          <view class="grid-cell"></view>
+          <view class="grid-cell"></view>
+        </view>
+        <view class="grid-row">
+          <view class="grid-cell"></view>
+          <view class="grid-cell"></view>
+          <view class="grid-cell"></view>
+          <view class="grid-cell"></view>
+        </view>
+        <view class="grid-row">
+          <view class="grid-cell"></view>
+          <view class="grid-cell"></view>
+          <view class="grid-cell"></view>
+          <view class="grid-cell"></view>
+        </view>
+        <view class="grid-row">
+          <view class="grid-cell"></view>
+          <view class="grid-cell"></view>
+          <view class="grid-cell"></view>
+          <view class="grid-cell"></view>
+        </view>
+      </view>
+        <view class="tile-container">
+        <block wx:for="{{numbers}}" wx:for-item="itemx"  wx:for-index="x" >
+          <block wx:for="{{numbers}}" wx:for-item="itemy"  wx:for-index="y" >
+            <block wx:if="{{numbers[x][y]!=0}}">
+              <view class="tile tile-{{numbers[x][y]}} tile-position-{{x+1}}-{{y+1}}">
+              <view class="tile-inner">{{numbers[x][y]}}</view></view>
+          </block>
+        </block>
+        </block>
+    </view>
+  </view>
+  </view>
+   <view class="author">create by no one. Email:yuekui888@126.com</view>

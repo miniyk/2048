@@ -1,0 +1,9 @@
+<view class="container">
+    <view class="heading">
+      <view class="title">2048</view>
+      <view class="scores-container">
+        <view class="score-container">0</view>
+        <view class="best-container">0</view>
+      </view>
+    </view>
+</view>
