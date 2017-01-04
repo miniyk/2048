@@ -62,4 +62,7 @@
     </view>
   </view>
   </view>
+
    <view class="author">create by no one. Email:yuekui888@126.com</view>
+   <audio src="{{src}}" id="myAudio"></audio>
+   </view>

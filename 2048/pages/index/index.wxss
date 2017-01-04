@@ -1,5 +1,5 @@
-.action_view{width:100%;height: 100%;}
-.containerWrap{min-height: 100%;font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;margin:1rem;color:#776e65;}
+.action_view{width:100%;height: 100%;position:fixed;}
+.containerWrap{font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;margin:1rem;color:#776e65;}
 .heading{margin-top:20rpx;height: 120rpx;}
 .heading .title{font-size:54rpx;display: inline-block;width:20%;line-height: 120rpx;}
 .scores-container{float: right;font-size:50rpx; }

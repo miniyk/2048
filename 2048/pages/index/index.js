@@ -17,7 +17,21 @@ Page({
     isOver: false,
     animationData: {},
     isAddScore:true,
-    addScore:0
+    addScore:0,
+    poster: 'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000',
+    name: '此时此刻',
+    author: '许巍',
+    src: 'http://yuekui.net/tips.mp3'
+  },
+  onReady: function (e) {
+    // 使用 wx.createAudioContext 获取 audio 上下文 context
+    this.audioCtx = wx.createAudioContext('myAudio')
+  },
+  audioPlay: function () {
+    this.audioCtx.play()
+  },
+  audioStart: function () {
+    this.audioCtx.seek(0)
   },
   onShow:function(){
   },
@@ -44,7 +58,6 @@ Page({
     })
   },
   onLoad: function () {
-    console.log('onLoad')
     var that = this
     //调用应用实例的方法获取全局数据
     app.getUserInfo(function (userInfo) {
@@ -325,7 +338,9 @@ Page({
             })
         this.animation=animation;
     }
-    
+    this.audioStart();
+    this.audioPlay();
+
     this.setData({isAddScore:false});
     this.setData({ isAddScore: false });
     this.animation.top(-50).opacity(0).step();
