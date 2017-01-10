@@ -15,13 +15,18 @@ Page({
     direction: '',
     numbers: [[2, 0, 0, 0], [0, 2, 0, 0], [0, 0, 0, 0], [0,0, 0, 0]],
     isOver: false,
+    isWin:false,
     animationData: {},
     isAddScore:true,
-    addScore:0,
-    poster: 'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000',
-    name: '此时此刻',
-    author: '许巍',
+    addScore:0, 
     src: 'http://yuekui.net/tips.mp3'
+  },
+  onShareAppMessage: function () {
+    return {
+      title: '2048微信版',
+      desc: '给你安利一个老少皆宜的益智游戏',
+      path: 'pages/index/index'
+    }
   },
   onReady: function (e) {
     // 使用 wx.createAudioContext 获取 audio 上下文 context
@@ -34,6 +39,9 @@ Page({
     this.audioCtx.seek(0)
   },
   onShow:function(){
+  },
+  keep:function(){
+    this.setData({isWin:false});
   },
   newGame: function () {
     var arr = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
@@ -49,7 +57,7 @@ Page({
       var ranNum=Math.random() < 0.8 ? 2 : 4;
       arr[posx][posy]=ranNum;
     }
-    this.setData({numbers: arr,score:0})
+    this.setData({numbers: arr,score:0,isOver:false})
   },
   //事件处理函数
   bindViewTap: function () {
@@ -160,6 +168,7 @@ Page({
             if (arr[i][j] != arr[i][j + k])
               break;
             arr[i][j] = arr[i][j] * 2;
+            this.isWinFn(arr[i][j]);
             arr[i][j + k] = 0;
             change = true;
             this.addScore(arr[j][i]);
@@ -194,6 +203,7 @@ Page({
           if (arr[i][j] != 0 && arr[i][j - k] != 0) {
             if (arr[i][j] != arr[i][j - k]) break;
             arr[i][j] = arr[i][j] * 2;
+            this.isWinFn(arr[i][j]);
             arr[i][j - k] = 0;
             change = true;
             this.addScore(arr[j][i]);
@@ -233,6 +243,7 @@ Page({
           if (arr[j][i] != 0 && arr[j - k][i] != 0) {
             if (arr[j][i] != arr[j - k][i]) break;
             arr[j][i] = arr[j][i] * 2;
+            this.isWinFn( arr[j][i]);
             arr[j - k][i] = 0;
             change = true
             this.addScore(arr[j][i]);
@@ -273,6 +284,7 @@ Page({
           if (arr[j][i] != 0 && arr[j + k][i] != 0) {
             if (arr[j][i] != arr[j + k][i]) break;
             arr[j][i] = arr[j][i] * 2;
+            this.isWinFn( arr[j][i]);
             arr[j + k][i] = 0;
             change = true
             this.addScore(arr[j][i]);
@@ -299,6 +311,13 @@ Page({
     })
     this.storeScore()
     return change
+  },
+  isWinFn:function(score){
+    if(score>0&&score%2048==0){
+        this.setData({
+          isWin: true
+        })
+    }
   },
   checkGame: function () {
     var arr = this.data.numbers

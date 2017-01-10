@@ -12,15 +12,16 @@
 
     <view class="above-game">
       <view class="game-intro">提示:快将数字组合得到2048吧</view>
-      <view class="restart-button" bindtap="newGame">New Game</view>
+      <view class="restart-button" bindtap="newGame">重新开始</view>
     </view>
 
     <view class="game-container">
-      <view class="game-message" wx:if="{{isOver==true}}">
-        <view class="game-tip">Game over!</view>
+      <view class="game-message" wx:if="{{isOver==true||isWin==true}}">
+        <view class="game-tip"  wx:if="{{isOver==true}}">Game over!</view>
+        <view class="game-tip"  wx:if="{{isWin==true}}">Win</view>
         <view class="lower">
-        <button class="retry-button">Try again</button>
-	      <button class="keeview-viewlaying-button">Keep going</button>
+        <button class="retry-button" bindtap="newGame" wx:if="{{isOver==true}}">Try again</button>
+	      <button class="keeview-viewlaying-button" bindtap="keep" wx:if="{{isWin==true}}">Keep going</button>
         </view>
       </view>
 

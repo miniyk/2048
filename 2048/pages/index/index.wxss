@@ -11,7 +11,7 @@
 .add_score{position:absolute;top:40rpx;color:#776e65;z-index:3;}
 .above-game{font-size:30rpx;}
 .game-intro{width:63%;display:inline-block;height: 80rpx;line-height: 80rpx; }
-.restart-button{width:37%; display:inline-block;height: 80rpx; text-align: center;color:#f9f6f2; line-height: 80rpx;border-radius: 0.26rem;background-color: #776e65;}
+.restart-button{width:37%; display:inline-block;height: 80rpx; text-align: center;color:#f9f6f2; line-height: 80rpx;border-radius: 0.26rem;background-color: #776e65;font-weight:bold;}
 .game-container .game-message{position: absolute;top: 0;right: 0;bottom: 0;left: 0;background: rgba(238, 228, 218, 0.5);z-index: 3;text-align: center;-webkit-animation: fade-in 800ms ease 1200ms;
 -moz-animation: fade-in 800ms ease 1200ms;animation: fade-in 800ms ease 1200ms;-webkit-animation-fill-mode: both; -moz-animation-fill-mode: both;
 animation-fill-mode: both;}
